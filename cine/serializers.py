@@ -19,7 +19,7 @@ class Sala_serializer(serializers.ModelSerializer):
 class Pelicula_serializer(serializers.ModelSerializer):
     class Meta:
         model = Pelicula
-        fields = '__all_'
+        fields = '__all__'
 
 
 class Funcion_serializer(serializers.ModelSerializer):
@@ -47,5 +47,5 @@ class Boleta_serializer(serializers.ModelSerializer):
 
     class Meta:
         model = Boleta
-        fields = '__all_'
+        fields = '__all__'
 

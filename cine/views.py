@@ -27,3 +27,14 @@ class Boleta_view(viewsets.ModelViewSet):
     queryset = Boleta.objects.all()
     serializer_class = Boleta_serializer
 
+
+class Cliente_view(viewsets.ModelViewSet):
+    queryset = Cliente.objects.all()
+    serializer_class = Cliente_serializer
+
+
+
+class Prueba_view(viewsets.ModelViewSet):
+    def get_queryset(self):
+        dato = self.request.query_params.get('dato')
+
