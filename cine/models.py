@@ -16,12 +16,20 @@ class Sala(models.Model):
     nombre = models.CharField(max_length=50)
     numero_asientos = models.IntegerField()
 
+    def __str__(self):
+        return self.cine.nombre + ' - ' + self.nombre
+
+
 class Pelicula(models.Model):
     nombre = models.CharField(max_length=50)
     duracion = models.CharField(max_length=5)
     genero = models.CharField(max_length=20)
     director = models.CharField(max_length=20)
     fecha = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.nombre + ' - ' + self.genero
+
 
 class Funcion(models.Model):
     pelicula = models.ForeignKey(Pelicula, on_delete=models.PROTECT)
@@ -30,10 +38,18 @@ class Funcion(models.Model):
     valor = models.IntegerField()
     hora = models.DateTimeField()
 
+    def __str__(self):
+        return self.pelicula.nombre + ' - ' + self.sala.nombre + ' - ' + str(self.sala.numero_asientos) + ' asientos  - ' + str(self.valor)
+
+
 class Cliente(models.Model):
     nombre = models.CharField(max_length=50)
     telefono = models.CharField(max_length=20)
     correo = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.nombre + ' - ' + self.correo
+
 
 class Boleta(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)
