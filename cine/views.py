@@ -45,6 +45,14 @@ class Cliente_view(viewsets.ModelViewSet):
 class Prueba_view(viewsets.ModelViewSet):
     def get_queryset(self):
         dato = self.request.query_params.get('dato')
+        if dato:
+            queryset = Sala.objects.filter(cine__nombre__contains=dato)
+        else:
+            queryset = Sala.objects.all()
+
+        return queryset
+    serializer_class = Sala_serializer
+
 
 
 class TokenProvider(ObtainAuthToken):

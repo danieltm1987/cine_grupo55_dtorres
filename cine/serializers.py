@@ -1,6 +1,4 @@
 from rest_framework import serializers
-from rest_framework.authtoken.admin import User
-
 from cine.models import *
 
 class Cine_serializer(serializers.ModelSerializer):
