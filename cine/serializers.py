@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from rest_framework.authtoken.admin import User
+
 from cine.models import *
 
 class Cine_serializer(serializers.ModelSerializer):
@@ -20,6 +22,23 @@ class Pelicula_serializer(serializers.ModelSerializer):
     class Meta:
         model = Pelicula
         fields = '__all__'
+
+
+class Usuario_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = '__all__'
+
+    def create(self, validated_data):
+        user = Usuario(
+            username=validated_data['username'],
+            correo=validated_data['correo'],
+            telefono=validated_data['telefono'],
+            nombre=validated_data['nombre'],
+        )
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
 
 
 class Funcion_serializer(serializers.ModelSerializer):

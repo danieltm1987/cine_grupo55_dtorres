@@ -9,8 +9,10 @@ router.register('pelicula',Pelicula_view,basename='pelicula')
 router.register('funcion',Funcion_view,basename='funcion')
 router.register('cliente',Cliente_view,basename='cliente')
 router.register('boleta',Boleta_view,basename='boleta')
-
+router.register('prueba',Prueba_view,basename='prueba')
+router.register('usuario',Usuario_view,basename='usuario')
 
 urlpatterns = [
-    path('',include(router.urls))
+    path('',include(router.urls)),
+    path('token',TokenProvider.as_view(), name='token')
 ]
