@@ -36,7 +36,7 @@ class Usuario(AbstractUser):
     nombre = models.CharField(max_length=50)
     telefono = models.CharField(max_length=20)
     correo = models.CharField(max_length=50)
-    token = models.CharField(max_length=100)
+    token = models.CharField(max_length=100,null=True, blank=True, default='')
 
 
 
